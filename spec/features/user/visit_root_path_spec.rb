@@ -12,6 +12,23 @@ describe 'as visitor' do
       expect(current_path).to eq(search_path)
     end
   end
+
+  describe 'when i search a house i get information for it' do
+    it 'shows me all relevent info' do
+      params = {"house"=>"Slytherin"}
+      visit search_path(params)
+
+      expect(page).to have_css('.all-students')
+      within('.all-students') do
+        expect(page).to have_content('22 Students')
+        expect(page).to have_css('.student', count: 22)
+        within('.all-students') do
+          expect(page).to have_css('.id')
+          expect(page).to have_css('.name')
+        end
+      end
+    end
+  end
 end
 
 
