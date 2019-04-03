@@ -2,7 +2,14 @@ class SearchController < ApplicationController
 
   def index
     render locals: {
-      facade: SearchFacade.new(params[:house])
+      facade: SearchFacade.new(search_params)
     }
+  end
+
+
+  private
+
+  def search_params
+    params.permit(:house)
   end
 end

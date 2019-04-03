@@ -5,7 +5,7 @@ RSpec.describe "SearchFacade" do
   it 'exist' do
     facade = SearchFacade.new({})
 
-    expect(facade).to eq(SearchFacade)
+    expect(facade).to be_a(SearchFacade)
   end
 
   describe 'instance methods' do
