@@ -9,7 +9,7 @@ class SearchFacade
   end
 
   def students
-    student_service(@house.downcase)[:data].first[:attributes][:students].map do |student_info|
+    student_service(@house.downcase).map do |student_info|
       Student.new(student_info)
     end
   end

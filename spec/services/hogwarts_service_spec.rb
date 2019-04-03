@@ -10,13 +10,13 @@ RSpec.describe 'HogwartsService' do
 
   describe '.get_students_in_house' do
     it 'returns all students for a house' do
-      service = HogwartsService.new('Slytherin')
+      service = HogwartsService.new(4)
 
       outcome = service.get_students_in_house
 
-      expect(outcome).to be_a(Hash)
-      expect(outcome).to have_key(:data)
-      expect(outcome[:data].first[:attributes]).to have_key(:students)
+      expect(outcome).to be_a(Array)
+      expect(outcome.first).to have_key(:name)
+      expect(outcome.first).to have_key(:id)
     end
   end
 end

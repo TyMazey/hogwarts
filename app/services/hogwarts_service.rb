@@ -11,14 +11,15 @@ class HogwartsService
   private
 
   def conn
-    Faraday.new(url: "http://hogwarts-it.herokuapp.com/api/v1/house/") do |f|
+    Faraday.new(url: "http://hogwarts-as-a-service.herokuapp.com/api/v1/house/") do |f|
       f.adapter Faraday.default_adapter
     end
   end
 
   def get_response
     conn.get "#{@search_params}" do |request|
-      request.params[:api_key] = "3fhZMZNXVndxk51mILsdVnGN6tF8KBI6"
+      request.headers['x_api_key'] = "oPGaRUMm7Cpisj6fosH8VhIgjnxx8zh1"
+      # request.params[:api_key] = "oPGaRUMm7Cpisj6fosH8Vhlgjnxx8zh1"
     end
   end
 

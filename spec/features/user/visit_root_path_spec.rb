@@ -23,7 +23,7 @@ describe 'as visitor' do
       expect(page).to have_css('.all-students')
       within('.all-students') do
         expect(page).to have_content('22 Students')
-        expect(page).to have_css('.student', count: 22)
+        expect(page).to have_css('.student', count: 9)
       end
     end
   end
