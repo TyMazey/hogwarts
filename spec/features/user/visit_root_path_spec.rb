@@ -15,17 +15,15 @@ describe 'as visitor' do
 
   describe 'when i search a house i get information for it' do
     it 'shows me all relevent info' do
-      params = {"house"=>"Slytherin"}
-      visit search_path(params)
+      visit root_path
+      select "Slytherin", from: 'house'
+      click_button('Get Students')
 
+      expect(current_path).to eq(search_path)
       expect(page).to have_css('.all-students')
       within('.all-students') do
         expect(page).to have_content('22 Students')
         expect(page).to have_css('.student', count: 22)
-        within('.all-students') do
-          expect(page).to have_css('.id')
-          expect(page).to have_css('.name')
-        end
       end
     end
   end

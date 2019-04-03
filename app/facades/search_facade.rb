@@ -1,7 +1,7 @@
 class SearchFacade
 
   def initialize(search_params)
-    @hosue = search_params[:house]
+    @house = search_params[:house]
   end
 
   def total_students
@@ -9,8 +9,14 @@ class SearchFacade
   end
 
   def students
-    HogwartsService(@house).map do |student_info|
+    student_service(@house.downcase)[:data].first[:attributes][:students].map do |student_info|
       Student.new(student_info)
     end
+  end
+
+  private
+
+  def student_service(search)
+    HogwartsService.new(search).get_students_in_house
   end
 end

@@ -11,7 +11,7 @@ RSpec.describe "SearchFacade" do
   describe 'instance methods' do
     describe '.total_students' do
       it 'returns the count of all students in the search' do
-        facade = SearchFacade.new({house: 'Slytherin'})
+        facade = SearchFacade.new({house: 'slytherin'})
 
         expect(facade.total_students).to eq(22)
       end
@@ -19,12 +19,10 @@ RSpec.describe "SearchFacade" do
 
     describe '.students' do
       it 'returns student objects from the search' do
-        facade = SearchFacade.new({house: 'Slytherin'})
+        facade = SearchFacade.new({house: 'slytherin'})
 
         expect(facade.students.count).to eq(22)
         expect(facade.students.first).to be_a(Student)
-        expect(facade.students.first.name).to eq('')
-        expect(facade.students.first.id).to eq('')
       end
     end
   end
