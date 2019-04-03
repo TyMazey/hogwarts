@@ -15,8 +15,8 @@ RSpec.describe 'HogwartsService' do
       outcome = service.get_students_in_house
 
       expect(outcome).to be_a(Hash)
-      expect(outcome).to have_key(:students)
-      expect(outcome).to have_key(:total_students)
+      expect(outcome).to have_key(:data)
+      expect(outcome[:data].first[:attributes]).to have_key(:students)
     end
   end
 end
